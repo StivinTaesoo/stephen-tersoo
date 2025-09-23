@@ -1,5 +1,5 @@
 // Types
-interface Project {
+export interface Project {
     id: number;
     title: string;
     description: string;
@@ -10,7 +10,7 @@ interface Project {
     category: string;
 }
 
-interface Experience {
+export interface Experience {
     id: number;
     title: string;
     company: string;
@@ -21,7 +21,7 @@ interface Experience {
     technologies: string[];
 }
 
-interface Skill {
+export interface Skill {
     name: string;
     level: number;
     category: string;

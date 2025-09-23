@@ -1,5 +1,6 @@
-// Sample data
-const projects: Project[] = [
+import { Experience, Project, Skill } from "../types";
+
+export const projects: Project[] = [
     {
         id: 1,
         title: "E-Commerce Platform",
@@ -90,7 +91,7 @@ const projects: Project[] = [
     },
 ];
 
-const experiences: Experience[] = [
+export const experiences: Experience[] = [
     {
         id: 1,
         title: "Senior Frontend Developer",
@@ -144,7 +145,7 @@ const experiences: Experience[] = [
     },
 ];
 
-const skills: Skill[] = [
+export const skills: Skill[] = [
     { name: "JavaScript", level: 95, category: "Frontend" },
     { name: "TypeScript", level: 90, category: "Frontend" },
     { name: "React", level: 95, category: "Frontend" },

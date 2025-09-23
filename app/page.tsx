@@ -1,9 +1,12 @@
-import AppComponent from "./components/portfolio";
+import HeroSection from "./components/Hero";
+import Navigation from "./components/Navigation";
+import ThemeProvider from "./components/ThemeProvider";
 
 export default function Home() {
     return (
-        <>
-            <AppComponent />
-        </>
+        <ThemeProvider>
+            <Navigation />
+            <HeroSection />
+        </ThemeProvider>
     );
 }
