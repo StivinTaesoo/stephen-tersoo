@@ -1,4 +1,5 @@
 import AboutSection from "./components/AboutSection";
+import ExperienceSection from "./components/ExperienceSection";
 import HeroSection from "./components/Hero";
 import Navigation from "./components/Navigation";
 import ProjectsSection from "./components/ProjectsSection";
@@ -13,6 +14,7 @@ export default function Home() {
             <AboutSection />
             <SkillsSection />
             <ProjectsSection />
+            <ExperienceSection />
         </ThemeProvider>
     );
 }
