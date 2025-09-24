@@ -33,12 +33,13 @@ const AboutSection = () => {
                     >
                         <div className="prose prose-lg dark:prose-dark max-w-none">
                             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                I'm a passionate Frontend Software Engineer with
-                                over 4 years of experience creating exceptional
-                                digital experiences. My journey began with a
-                                curiosity about how websites work, which evolved
-                                into a deep love for crafting beautiful,
-                                functional, and user-centric web applications.
+                                I&apos;m a passionate Frontend Software Engineer
+                                with over 4 years of experience creating
+                                exceptional digital experiences. My journey
+                                began with a curiosity about how websites work,
+                                which evolved into a deep love for crafting
+                                beautiful, functional, and user-centric web
+                                applications.
                             </p>
                             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                 I specialize in modern frontend technologies
@@ -50,10 +51,10 @@ const AboutSection = () => {
                                 best practices.
                             </p>
                             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                When I'm not coding, you can find me exploring
-                                new technologies, contributing to open-source
-                                projects, or sharing knowledge with the
-                                developer community through blog posts and
+                                When I&apos;m not coding, you can find me
+                                exploring new technologies, contributing to
+                                open-source projects, or sharing knowledge with
+                                the developer community through blog posts and
                                 mentoring.
                             </p>
                         </div>

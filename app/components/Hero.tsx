@@ -24,7 +24,7 @@ const HeroSection = () => {
                                 transition={{ duration: 0.6, delay: 0.1 }}
                                 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
                             >
-                                Hi, I'm{" "}
+                                Hi, I&apos;m{" "}
                                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                                     Stephen Tersoo
                                 </span>
