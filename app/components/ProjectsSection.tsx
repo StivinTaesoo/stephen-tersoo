@@ -89,14 +89,16 @@ const ProjectsSection = () => {
                                             >
                                                 <ExternalLink size={20} />
                                             </a>
-                                            <a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-2 bg-white rounded-full text-gray-900 hover:bg-gray-100 transition-colors duration-200"
-                                            >
-                                                <Github size={20} />
-                                            </a>
+                                            {project.githubUrl && (
+                                                <a
+                                                    href={project.githubUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="p-2 bg-white rounded-full text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+                                                >
+                                                    <Github size={20} />
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
 
