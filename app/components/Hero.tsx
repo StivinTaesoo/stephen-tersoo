@@ -85,7 +85,7 @@ const HeroSection = () => {
                             className="flex space-x-4"
                         >
                             <a
-                                href="https://github.com/stephenterso"
+                                href="https://github.com/StivinTaesoo"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -93,7 +93,7 @@ const HeroSection = () => {
                                 <Github size={24} />
                             </a>
                             <a
-                                href="https://linkedin.com/in/stephenterso"
+                                href="https://www.linkedin.com/mwlite/in/tersoo-stephen-66a70a93"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -101,7 +101,7 @@ const HeroSection = () => {
                                 <Linkedin size={24} />
                             </a>
                             <a
-                                href="mailto:stephen.terso@example.com"
+                                href="mailto:stephentersoo17@gmail.com"
                                 className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                             >
                                 <Mail size={24} />

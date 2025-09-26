@@ -94,55 +94,41 @@ export const projects: Project[] = [
 export const experiences: Experience[] = [
     {
         id: 1,
-        title: "Senior Frontend Developer",
-        company: "TechCorp Solutions",
-        location: "San Francisco, CA (Remote)",
-        startDate: "2023-01",
-        endDate: "Present",
+        title: "Intern Software Engineer",
+        company: "eHealth Africa",
+        location: "Abuja, Nigeria (Remote)",
+        startDate: "2025-01",
+        endDate: "2025-08",
         description: [
-            "Led a team of 4 frontend developers in building scalable web applications using Next.js and React",
-            "Improved application performance by 40% through code optimization and implementation of best practices",
+            "Worked with a team of 4 frontend developers in building scalable web applications using Next.js and React",
+            "Improved application performance through code optimization and implementation of best practices",
             "Collaborated with UX/UI designers to create responsive and accessible user interfaces",
-            "Mentored junior developers and conducted code reviews to maintain high code quality standards",
+           ,
         ],
         technologies: [
             "Next.js",
             "React",
             "TypeScript",
-            "Tailwind CSS",
-            "GraphQL",
+            "Rsuite",
+            
         ],
     },
     {
         id: 2,
         title: "Frontend Developer",
-        company: "StartupXYZ",
-        location: "Austin, TX",
-        startDate: "2021-06",
-        endDate: "2022-12",
+        company: "Spacelink Ltd",
+        location: "Abuja, Nigeria (Remote)",
+        startDate: "2024-06",
+        endDate: "Present",
         description: [
             "Developed and maintained customer-facing web applications serving 50,000+ monthly active users",
             "Implemented responsive design principles ensuring optimal user experience across all devices",
             "Integrated third-party APIs and payment systems to enhance application functionality",
             "Participated in agile development processes and sprint planning sessions",
         ],
-        technologies: ["React", "JavaScript", "CSS3", "Node.js", "MongoDB"],
+        technologies: ["React", "JavaScript", "Next.js", "Typescript", "Tailwind"],
     },
-    {
-        id: 3,
-        title: "Junior Frontend Developer",
-        company: "WebAgency Pro",
-        location: "Dallas, TX",
-        startDate: "2020-03",
-        endDate: "2021-05",
-        description: [
-            "Built responsive websites and web applications for various clients across different industries",
-            "Collaborated with design teams to translate mockups into functional, interactive web interfaces",
-            "Optimized websites for search engines and improved loading speeds by 35%",
-            "Learned and applied modern frontend technologies and development workflows",
-        ],
-        technologies: ["HTML5", "CSS3", "JavaScript", "jQuery", "WordPress"],
-    },
+    
 ];
 
 export const skills: Skill[] = [
