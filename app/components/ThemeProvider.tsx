@@ -29,7 +29,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
             <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
                 <button
                     onClick={() => setIsDark(!isDark)}
-                    className="fixed top-4 right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200"
+                    className="fixed hidden top-4 right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200"
                     aria-label="Toggle theme"
                 >
                     {isDark ? <Sun size={20} /> : <Moon size={20} />}

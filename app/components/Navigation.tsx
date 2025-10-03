@@ -1,12 +1,16 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
+
+    const router = useRouter();
 
     const navItems = [
         { id: "home", label: "Home" },
@@ -52,9 +56,16 @@ const Navigation = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                        className="text-2xl w-[30%] md:w-[10%] font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                     >
-                        Stephen Tersoo
+                        <Image
+                            src={"/images/logo.png"}
+                            alt="TS"
+                            width={200}
+                            height={200}
+                            className="w-full"
+                            onClick={() => router.push("/")}
+                        />
                     </motion.div>
 
                     {/* Desktop Navigation */}

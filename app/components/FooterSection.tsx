@@ -78,8 +78,7 @@ const Footer = () => {
                             Get In Touch
                         </h4>
                         <div className="space-y-2 text-gray-400">
-                            <p>San Francisco, CA</p>
-                            <p>stephen.terso@example.com</p>
+                            <p>Benue State, Nigeria</p>
                             <p>Available for new opportunities</p>
                         </div>
                     </div>

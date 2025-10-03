@@ -144,7 +144,7 @@ const AboutSection = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-2 gap-6"
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     >
                         {services.map((service, index) => {
                             const Icon = service.icon;
