@@ -57,10 +57,9 @@ export const experiences: Experience[] = [
         startDate: "2024-06",
         endDate: "Present",
         description: [
-            "Developed and maintained customer-facing web applications serving 50,000+ monthly active users",
+            "Developed the public-facing webpages of a functional multi-player card game with Next js, typescript and node js",
             "Implemented responsive design principles ensuring optimal user experience across all devices",
             "Integrated third-party APIs and payment systems to enhance application functionality",
-            "Participated in agile development processes and sprint planning sessions",
         ],
         technologies: [
             "React",
