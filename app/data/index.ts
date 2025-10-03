@@ -10,7 +10,7 @@ export const projects: Project[] = [
         technologies: ["Next.js", "TypeScript", "RSuite", "Firebase"],
         liveUrl: "https://academy.ehealthafrica.org",
 
-        category: "Frontend",
+        category: "Full Stack",
     },
     {
         id: 2,

@@ -146,15 +146,6 @@ const AboutSection = () => {
                         viewport={{ once: true }}
                         className="grid grid-cols-2 gap-6"
                     >
-                        {/* <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                                4+
-                            </div>
-                            <div className="text-gray-600 dark:text-gray-300">
-                                Years Experience
-                            </div>
-                        </div> */}
-
                         {services.map((service, index) => {
                             const Icon = service.icon;
                             return (

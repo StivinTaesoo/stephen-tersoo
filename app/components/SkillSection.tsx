@@ -6,7 +6,7 @@ import { skills } from "../data";
 
 const SkillsSection = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
-    const categories = ["All", "Frontend", "Backend", "Tools"];
+    const categories = ["All", "Frontend", "Tools"];
 
     const filteredSkills =
         selectedCategory === "All"

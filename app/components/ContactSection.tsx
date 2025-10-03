@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
     CheckCircle,
     Github,
@@ -37,14 +38,28 @@ const ContactSection = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        try {
+            await emailjs.send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+                {
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                },
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+            );
 
-        setIsSubmitting(false);
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-
-        setTimeout(() => setSubmitStatus("idle"), 5000);
+            setIsSubmitting(false);
+            setSubmitStatus("success");
+            setFormData({ name: "", email: "", subject: "", message: "" });
+            setTimeout(() => setSubmitStatus("idle"), 5000);
+        } catch (error) {
+            console.error("Failed to send email:", error);
+            setIsSubmitting(false);
+            setSubmitStatus("error");
+        }
     };
 
     return (
@@ -113,7 +128,7 @@ const ContactSection = () => {
                                 <div>
                                     <h4 className="font-medium">Location</h4>
                                     <p className="text-gray-600 dark:text-gray-300">
-                                        Nigeria
+                                        Benue State, Nigeria
                                     </p>
                                 </div>
                             </div>
@@ -140,7 +155,7 @@ const ContactSection = () => {
                             </h4>
                             <div className="flex space-x-4">
                                 <a
-                                    href="https://github.com/stephenterso"
+                                    href="https://github.com/StivinTaesoo"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
@@ -148,7 +163,7 @@ const ContactSection = () => {
                                     <Github size={20} />
                                 </a>
                                 <a
-                                    href="https://linkedin.com/in/stephenterso"
+                                    href="https://www.linkedin.com/mwlite/in/tersoo-stephen-66a70a93"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
