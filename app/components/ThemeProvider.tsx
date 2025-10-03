@@ -7,16 +7,21 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
-        const saved = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-        ).matches;
-        setIsDark(saved ? saved === "dark" : prefersDark);
+        // Check if we're in browser environment
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches;
+            setIsDark(saved ? saved === "dark" : prefersDark);
+        }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        document.documentElement.classList.toggle("dark", isDark);
+        if (typeof window !== "undefined") {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+            document.documentElement.classList.toggle("dark", isDark);
+        }
     }, [isDark]);
 
     return (
@@ -34,4 +39,5 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         </div>
     );
 };
+
 export default ThemeProvider;

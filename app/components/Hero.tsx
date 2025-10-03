@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 
 const HeroSection = () => {
     return (
@@ -119,7 +120,13 @@ const HeroSection = () => {
                             <div className="w-80 h-80 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
                                 <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
                                     <div className="w-72 h-72 rounded-full bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center text-6xl font-bold text-gray-500 dark:text-gray-400">
-                                        ST
+                                        <Image
+                                            src={"/images/tersoo.png"}
+                                            alt="ST"
+                                            className="w-full h-full"
+                                            width={200}
+                                            height={200}
+                                        />
                                     </div>
                                 </div>
                             </div>
