@@ -21,25 +21,25 @@ const Navigation = () => {
         { id: "contact", label: "Contact" },
     ];
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = navItems.map((item) =>
-                document.getElementById(item.id)
-            );
-            const scrollPosition = window.scrollY + 100;
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const sections = navItems.map((item) =>
+    //             document.getElementById(item.id)
+    //         );
+    //         const scrollPosition = window.scrollY + 100;
 
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = sections[i];
-                if (section && section.offsetTop <= scrollPosition) {
-                    setActiveSection(navItems[i].id);
-                    break;
-                }
-            }
-        };
+    //         for (let i = sections.length - 1; i >= 0; i--) {
+    //             const section = sections[i];
+    //             if (section && section.offsetTop <= scrollPosition) {
+    //                 setActiveSection(navItems[i].id);
+    //                 break;
+    //             }
+    //         }
+    //     };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    //     window.addEventListener("scroll", handleScroll);
+    //     return () => window.removeEventListener("scroll", handleScroll);
+    // }, []);
 
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
@@ -75,7 +75,7 @@ const Navigation = () => {
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
-                                onClick={() => scrollToSection(item.id)}
+                                onClick={() => router.push(`#${item.id}`)}
                                 className={`text-sm font-medium transition-colors duration-200 hover:text-blue-600 dark:hover:text-blue-400 ${
                                     activeSection === item.id
                                         ? "text-blue-600 dark:text-blue-400"
