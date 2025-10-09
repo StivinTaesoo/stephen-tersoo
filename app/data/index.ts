@@ -16,7 +16,7 @@ export const projects: Project[] = [
         id: 2,
         title: "Eagle City Website UI",
         description: "A Tailwind UI coversion of Eagle City FC website",
-        image: "/images/eagle-city.png",
+        image: "/images/eagle-city.PNG",
         technologies: ["HTML", "Tailwind", "CSS3"],
         liveUrl: "https://elegant-crepe-47fd27.netlify.app",
         githubUrl: "https://github.com/StivinTaesoo/eagle-city-fc",

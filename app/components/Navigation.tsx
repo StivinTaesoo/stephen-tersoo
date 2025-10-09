@@ -46,7 +46,9 @@ const Navigation = () => {
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
         }
-        setIsOpen(false);
+        setTimeout(() => {
+            setIsOpen(false);
+        }, 300);
     };
 
     return (
@@ -109,7 +111,10 @@ const Navigation = () => {
                             {navItems.map((item) => (
                                 <button
                                     key={item.id}
-                                    onClick={() => scrollToSection(item.id)}
+                                    onClick={() => {
+                                        router.push(`#${item.id}`);
+                                        setIsOpen(false);
+                                    }}
                                     className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                                         activeSection === item.id
                                             ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50"
