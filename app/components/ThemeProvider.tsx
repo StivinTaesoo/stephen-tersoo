@@ -1,42 +1,124 @@
 "use client";
 
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+    ReactNode,
+} from "react";
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const [isDark, setIsDark] = useState(false);
+type Theme = "light" | "dark";
+
+interface ThemeContextType {
+    theme: Theme;
+    toggleTheme: () => void;
+}
+
+// Create context with a default value
+const ThemeContext = createContext<ThemeContextType>({
+    theme: "light",
+    toggleTheme: () => {},
+});
+
+export const useTheme = () => {
+    const context = useContext(ThemeContext);
+    return context;
+};
+
+interface ThemeProviderProps {
+    children: ReactNode;
+}
+
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
+    const [theme, setTheme] = useState<Theme>("light");
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        // Check if we're in browser environment
-        if (typeof window !== "undefined") {
-            const saved = localStorage.getItem("theme");
-            const prefersDark = window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches;
-            setIsDark(saved ? saved === "dark" : prefersDark);
-        }
+        setMounted(true);
+
+        const savedTheme = localStorage.getItem("theme") as Theme | null;
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+            .matches
+            ? "dark"
+            : "light";
+
+        const initialTheme = savedTheme || systemTheme;
+        setTheme(initialTheme);
     }, []);
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            localStorage.setItem("theme", isDark ? "dark" : "light");
-            document.documentElement.classList.toggle("dark", isDark);
+        if (mounted) {
+            localStorage.setItem("theme", theme);
+            // Set data attribute for CSS targeting
+            document.documentElement.setAttribute("data-theme", theme);
         }
-    }, [isDark]);
+    }, [theme, mounted]);
+
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    };
+
+    // Define colors matching your original Tailwind classes exactly
+    const colors = {
+        background: theme === "dark" ? "#111827" : "#ffffff", // dark:bg-gray-900 / bg-white
+        foreground: theme === "dark" ? "#ffffff" : "#111827", // dark:text-white / text-gray-900
+        buttonBg: theme === "dark" ? "#1f2937" : "#e5e7eb", // dark:bg-gray-800 / bg-gray-200
+        buttonHover: theme === "dark" ? "#374151" : "#d1d5db", // dark:hover:bg-gray-700 / hover:bg-gray-300
+    };
+
+    // Always render, but show loading state until mounted
+    if (!mounted) {
+        return (
+            <ThemeContext.Provider
+                value={{ theme: "light", toggleTheme: () => {} }}
+            >
+                <div style={{ minHeight: "100vh", background: "#ffffff" }}>
+                    {children}
+                </div>
+            </ThemeContext.Provider>
+        );
+    }
 
     return (
-        <div className={isDark ? "dark" : ""}>
-            <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <div
+                style={{
+                    minHeight: "100vh",
+                    background: colors.background,
+                    color: colors.foreground,
+                    transition: "background-color 0.3s ease, color 0.3s ease",
+                }}
+            >
                 <button
-                    onClick={() => setIsDark(!isDark)}
-                    className="fixed top-4 right-20 md:right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200"
+                    onClick={toggleTheme}
+                    style={{
+                        position: "fixed",
+                        top: "1rem",
+                        right: "5rem",
+                        zIndex: 50,
+                        padding: "0.5rem",
+                        borderRadius: "9999px",
+                        background: colors.buttonBg,
+                        border: "none",
+                        cursor: "pointer",
+                        transition: "background-color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.background = colors.buttonHover;
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.background = colors.buttonBg;
+                    }}
                     aria-label="Toggle theme"
+                    className="md:right-4"
                 >
-                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                    {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
                 {children}
             </div>
-        </div>
+        </ThemeContext.Provider>
     );
 };
 

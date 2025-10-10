@@ -1,14 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Download, MapPin } from "lucide-react";
-import { Code, Rocket, Users, Zap } from "lucide-react";
+import {
+    Calendar,
+    Download,
+    MapPin,
+    Code,
+    Rocket,
+    Users,
+    Zap,
+} from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 interface ServiceCard {
     icon: React.ElementType;
     title: string;
     description: string;
-    badge?: string;
 }
 
 const services: ServiceCard[] = [
@@ -39,44 +46,85 @@ const services: ServiceCard[] = [
 ];
 
 const AboutSection = () => {
+    const { theme } = useTheme();
+
+    // Define colors based on theme
+    const isDark = theme === "dark";
+
     return (
-        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
+        <section id="about" style={{ padding: "5rem 1rem" }}>
+            <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    style={{ textAlign: "center", marginBottom: "4rem" }}
                 >
-                    <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                    <h2
+                        style={{
+                            fontSize: "2.5rem",
+                            fontWeight: "bold",
+                            marginBottom: "1rem",
+                        }}
+                    >
                         About Me
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    <p
+                        style={{
+                            fontSize: "1.25rem",
+                            color: "var(--text-secondary)",
+                            maxWidth: "48rem",
+                            margin: "0 auto",
+                        }}
+                    >
                         Learn more about my journey, passion, and what drives me
                         as a developer
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns:
+                            "repeat(auto-fit, minmax(300px, 1fr))",
+                        gap: "3rem",
+                        alignItems: "center",
+                    }}
+                >
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="space-y-6"
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "1.5rem",
+                        }}
                     >
-                        <div className="prose prose-lg dark:prose-dark max-w-none">
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                I&apos;m a passionate Frontend Software Engineer
-                                with over 4 years of experience creating
-                                exceptional digital experiences. My journey
-                                began with a curiosity about how websites work,
-                                which evolved into a deep love for crafting
-                                beautiful, functional, and user-centric web
-                                applications.
+                        <div>
+                            <p
+                                style={{
+                                    color: "var(--text-secondary)",
+                                    lineHeight: "1.8",
+                                    marginBottom: "1rem",
+                                }}
+                            >
+                                I'm a passionate Frontend Software Engineer with
+                                over 4 years of experience creating exceptional
+                                digital experiences. My journey began with a
+                                curiosity about how websites work, which evolved
+                                into a deep love for crafting beautiful,
+                                functional, and user-centric web applications.
                             </p>
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <p
+                                style={{
+                                    color: "var(--text-secondary)",
+                                    lineHeight: "1.8",
+                                    marginBottom: "1rem",
+                                }}
+                            >
                                 I specialize in modern frontend technologies
                                 including React, Next.js, and TypeScript, with a
                                 strong focus on performance optimization,
@@ -85,11 +133,16 @@ const AboutSection = () => {
                                 up-to-date with the latest industry trends and
                                 best practices.
                             </p>
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                When I&apos;m not coding, you can find me
-                                exploring new technologies, contributing to
-                                open-source projects, or sharing knowledge with
-                                the developer community through blog posts and
+                            <p
+                                style={{
+                                    color: "var(--text-secondary)",
+                                    lineHeight: "1.8",
+                                }}
+                            >
+                                When I'm not coding, you can find me exploring
+                                new technologies, contributing to open-source
+                                projects, or sharing knowledge with the
+                                developer community through blog posts and
                                 mentoring.
                             </p>
                         </div>
@@ -99,23 +152,59 @@ const AboutSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="flex flex-wrap gap-4"
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: "1rem",
+                            }}
                         >
-                            <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-900/30 px-4 py-2 rounded-full">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "0.5rem",
+                                    background: isDark
+                                        ? "rgba(59, 130, 246, 0.2)"
+                                        : "rgba(59, 130, 246, 0.1)",
+                                    padding: "0.5rem 1rem",
+                                    borderRadius: "9999px",
+                                }}
+                            >
                                 <MapPin
                                     size={16}
-                                    className="text-blue-600 dark:text-blue-400"
+                                    style={{ color: "var(--accent-blue)" }}
                                 />
-                                <span className="text-sm font-medium">
+                                <span
+                                    style={{
+                                        fontSize: "0.875rem",
+                                        fontWeight: "500",
+                                    }}
+                                >
                                     Benue State, Nigeria
                                 </span>
                             </div>
-                            <div className="flex items-center space-x-2 bg-green-100 dark:bg-green-900/30 px-4 py-2 rounded-full">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "0.5rem",
+                                    background: isDark
+                                        ? "rgba(16, 185, 129, 0.2)"
+                                        : "rgba(16, 185, 129, 0.1)",
+                                    padding: "0.5rem 1rem",
+                                    borderRadius: "9999px",
+                                }}
+                            >
                                 <Calendar
                                     size={16}
-                                    className="text-green-600 dark:text-green-400"
+                                    style={{ color: "var(--accent-green)" }}
                                 />
-                                <span className="text-sm font-medium">
+                                <span
+                                    style={{
+                                        fontSize: "0.875rem",
+                                        fontWeight: "500",
+                                    }}
+                                >
                                     Available for work
                                 </span>
                             </div>
@@ -126,13 +215,34 @@ const AboutSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                             viewport={{ once: true }}
-                            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
                             onClick={() =>
                                 window.open(
                                     "/images/stephen-tersoo-resume.pdf",
                                     "_blank"
                                 )
                             }
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.5rem",
+                                padding: "0.75rem 1.5rem",
+                                background:
+                                    "linear-gradient(to right, #3b82f6, #8b5cf6)",
+                                color: "white",
+                                border: "none",
+                                borderRadius: "0.5rem",
+                                cursor: "pointer",
+                                fontSize: "1rem",
+                                fontWeight: "500",
+                                transition: "transform 0.2s ease",
+                                width: "fit-content",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "scale(1.05)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "scale(1)";
+                            }}
                         >
                             <Download size={20} />
                             <span>Download Resume</span>
@@ -144,32 +254,64 @@ const AboutSection = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns:
+                                "repeat(auto-fit, minmax(200px, 1fr))",
+                            gap: "1.5rem",
+                        }}
                     >
                         {services.map((service, index) => {
                             const Icon = service.icon;
                             return (
                                 <div
                                     key={index}
-                                    className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+                                    style={{
+                                        background: "var(--card-bg)",
+                                        padding: "1.5rem",
+                                        borderRadius: "0.75rem",
+                                        border: "1px solid var(--card-border)",
+                                        boxShadow: `0 4px 6px var(--card-shadow)`,
+                                        transition: "box-shadow 0.3s ease",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.boxShadow = `0 10px 15px var(--card-shadow)`;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.boxShadow = `0 4px 6px var(--card-shadow)`;
+                                    }}
                                 >
-                                    <div className="flex flex-col items-center text-center space-y-4">
-                                        <div className="relative">
-                                            <Icon
-                                                className="w-12 h-12 text-blue-600"
-                                                strokeWidth={1.5}
-                                            />
-                                            {service.badge && (
-                                                <div className="absolute -bottom-2 -right-2 bg-white border border-gray-200 rounded-full px-3 py-1 text-xs font-medium shadow-sm flex items-center gap-1">
-                                                    <Zap className="w-3 h-3" />
-                                                    {service.badge}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <h3 className="text-xl font-semibold text-gray-400">
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            textAlign: "center",
+                                            gap: "1rem",
+                                        }}
+                                    >
+                                        <Icon
+                                            size={48}
+                                            style={{
+                                                color: "var(--accent-blue)",
+                                                strokeWidth: 1.5,
+                                            }}
+                                        />
+                                        <h3
+                                            style={{
+                                                fontSize: "1.25rem",
+                                                fontWeight: "600",
+                                                color: "var(--text-primary)",
+                                            }}
+                                        >
                                             {service.title}
                                         </h3>
-                                        <p className="text-gray-600 leading-relaxed">
+                                        <p
+                                            style={{
+                                                color: "var(--text-secondary)",
+                                                lineHeight: "1.6",
+                                            }}
+                                        >
                                             {service.description}
                                         </p>
                                     </div>
@@ -182,4 +324,5 @@ const AboutSection = () => {
         </section>
     );
 };
+
 export default AboutSection;
