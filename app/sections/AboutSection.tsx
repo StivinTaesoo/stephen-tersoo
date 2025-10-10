@@ -10,7 +10,7 @@ import {
     Users,
     Zap,
 } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "../components/ThemeProvider";
 
 interface ServiceCard {
     icon: React.ElementType;
