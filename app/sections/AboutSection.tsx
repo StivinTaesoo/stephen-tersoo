@@ -47,83 +47,61 @@ const services: ServiceCard[] = [
 
 const AboutSection = () => {
     const { theme } = useTheme();
-
-    // Define colors based on theme
     const isDark = theme === "dark";
 
     return (
-        <section id="about" style={{ padding: "5rem 1rem" }}>
-            <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
+        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    style={{ textAlign: "center", marginBottom: "4rem" }}
+                    className="text-center mb-16"
                 >
-                    <h2
-                        style={{
-                            fontSize: "2.5rem",
-                            fontWeight: "bold",
-                            marginBottom: "1rem",
-                        }}
-                    >
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         About Me
                     </h2>
                     <p
-                        style={{
-                            fontSize: "1.25rem",
-                            color: "var(--text-secondary)",
-                            maxWidth: "48rem",
-                            margin: "0 auto",
-                        }}
+                        className={`text-xl ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                        }   max-w-3xl mx-auto`}
                     >
                         Learn more about my journey, passion, and what drives me
                         as a developer
                     </p>
                 </motion.div>
 
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns:
-                            "repeat(auto-fit, minmax(300px, 1fr))",
-                        gap: "3rem",
-                        alignItems: "center",
-                    }}
-                >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "1.5rem",
-                        }}
+                        className="space-y-6"
                     >
-                        <div>
+                        <div
+                            className={`prose  ${
+                                isDark ? "prose-dark" : "prose-lg"
+                            }  max-w-none`}
+                        >
                             <p
-                                style={{
-                                    color: "var(--text-secondary)",
-                                    lineHeight: "1.8",
-                                    marginBottom: "1rem",
-                                }}
+                                className={`${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                } leading-relaxed`}
                             >
-                                I'm a passionate Frontend Software Engineer with
-                                over 4 years of experience creating exceptional
-                                digital experiences. My journey began with a
-                                curiosity about how websites work, which evolved
-                                into a deep love for crafting beautiful,
-                                functional, and user-centric web applications.
+                                I&apos;m a passionate Frontend Software Engineer
+                                with over 4 years of experience creating
+                                exceptional digital experiences. My journey
+                                began with a curiosity about how websites work,
+                                which evolved into a deep love for crafting
+                                beautiful, functional, and user-centric web
+                                applications.
                             </p>
                             <p
-                                style={{
-                                    color: "var(--text-secondary)",
-                                    lineHeight: "1.8",
-                                    marginBottom: "1rem",
-                                }}
+                                className={`${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                } leading-relaxed`}
                             >
                                 I specialize in modern frontend technologies
                                 including React, Next.js, and TypeScript, with a
@@ -134,15 +112,14 @@ const AboutSection = () => {
                                 best practices.
                             </p>
                             <p
-                                style={{
-                                    color: "var(--text-secondary)",
-                                    lineHeight: "1.8",
-                                }}
+                                className={`${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                } leading-relaxed`}
                             >
-                                When I'm not coding, you can find me exploring
-                                new technologies, contributing to open-source
-                                projects, or sharing knowledge with the
-                                developer community through blog posts and
+                                When I&apos;m not coding, you can find me
+                                exploring new technologies, contributing to
+                                open-source projects, or sharing knowledge with
+                                the developer community through blog posts and
                                 mentoring.
                             </p>
                         </div>
@@ -152,59 +129,35 @@ const AboutSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
-                            style={{
-                                display: "flex",
-                                flexWrap: "wrap",
-                                gap: "1rem",
-                            }}
+                            className="flex flex-wrap gap-4"
                         >
-                            <div
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "0.5rem",
-                                    background: isDark
-                                        ? "rgba(59, 130, 246, 0.2)"
-                                        : "rgba(59, 130, 246, 0.1)",
-                                    padding: "0.5rem 1rem",
-                                    borderRadius: "9999px",
-                                }}
-                            >
+                            <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-900/30 px-4 py-2 rounded-full">
                                 <MapPin
                                     size={16}
-                                    style={{ color: "var(--accent-blue)" }}
+                                    className={`${
+                                        isDark
+                                            ? "text-blue-400"
+                                            : "text-blue-600"
+                                    } `}
                                 />
-                                <span
-                                    style={{
-                                        fontSize: "0.875rem",
-                                        fontWeight: "500",
-                                    }}
-                                >
+                                <span className="text-sm font-medium">
                                     Benue State, Nigeria
                                 </span>
                             </div>
                             <div
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "0.5rem",
-                                    background: isDark
-                                        ? "rgba(16, 185, 129, 0.2)"
-                                        : "rgba(16, 185, 129, 0.1)",
-                                    padding: "0.5rem 1rem",
-                                    borderRadius: "9999px",
-                                }}
+                                className={`flex items-center space-x-2 ${
+                                    isDark ? "bg-green-900/30" : "bg-green-100"
+                                } px-4 py-2 rounded-full`}
                             >
                                 <Calendar
                                     size={16}
-                                    style={{ color: "var(--accent-green)" }}
+                                    className={`${
+                                        isDark
+                                            ? "text-green-400"
+                                            : "text-green-600"
+                                    }`}
                                 />
-                                <span
-                                    style={{
-                                        fontSize: "0.875rem",
-                                        fontWeight: "500",
-                                    }}
-                                >
+                                <span className="text-sm font-medium">
                                     Available for work
                                 </span>
                             </div>
@@ -215,34 +168,13 @@ const AboutSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                             viewport={{ once: true }}
+                            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
                             onClick={() =>
                                 window.open(
                                     "/images/stephen-tersoo-resume.pdf",
                                     "_blank"
                                 )
                             }
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.5rem",
-                                padding: "0.75rem 1.5rem",
-                                background:
-                                    "linear-gradient(to right, #3b82f6, #8b5cf6)",
-                                color: "white",
-                                border: "none",
-                                borderRadius: "0.5rem",
-                                cursor: "pointer",
-                                fontSize: "1rem",
-                                fontWeight: "500",
-                                transition: "transform 0.2s ease",
-                                width: "fit-content",
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = "scale(1.05)";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = "scale(1)";
-                            }}
                         >
                             <Download size={20} />
                             <span>Download Resume</span>
@@ -254,64 +186,30 @@ const AboutSection = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns:
-                                "repeat(auto-fit, minmax(200px, 1fr))",
-                            gap: "1.5rem",
-                        }}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     >
                         {services.map((service, index) => {
                             const Icon = service.icon;
                             return (
                                 <div
                                     key={index}
-                                    style={{
-                                        background: "var(--card-bg)",
-                                        padding: "1.5rem",
-                                        borderRadius: "0.75rem",
-                                        border: "1px solid var(--card-border)",
-                                        boxShadow: `0 4px 6px var(--card-shadow)`,
-                                        transition: "box-shadow 0.3s ease",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.boxShadow = `0 10px 15px var(--card-shadow)`;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.boxShadow = `0 4px 6px var(--card-shadow)`;
-                                    }}
+                                    className={`${
+                                        isDark
+                                            ? "bg-gray-800 border-gray-700"
+                                            : "bg-white border-gray-200"
+                                    } p-6 rounded-xl shadow-lg border  `}
                                 >
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            textAlign: "center",
-                                            gap: "1rem",
-                                        }}
-                                    >
-                                        <Icon
-                                            size={48}
-                                            style={{
-                                                color: "var(--accent-blue)",
-                                                strokeWidth: 1.5,
-                                            }}
-                                        />
-                                        <h3
-                                            style={{
-                                                fontSize: "1.25rem",
-                                                fontWeight: "600",
-                                                color: "var(--text-primary)",
-                                            }}
-                                        >
+                                    <div className="flex flex-col items-center text-center space-y-4">
+                                        <div className="relative">
+                                            <Icon
+                                                className="w-12 h-12 text-blue-600"
+                                                strokeWidth={1.5}
+                                            />
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-gray-400">
                                             {service.title}
                                         </h3>
-                                        <p
-                                            style={{
-                                                color: "var(--text-secondary)",
-                                                lineHeight: "1.6",
-                                            }}
-                                        >
+                                        <p className="text-gray-600 leading-relaxed">
                                             {service.description}
                                         </p>
                                     </div>
