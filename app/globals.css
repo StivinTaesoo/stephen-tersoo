@@ -1,27 +1,82 @@
 @import "tailwindcss";
 
+/* ============================================
+   THEME VARIABLES - Light Mode (Default)
+   ============================================ */
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    /* Background colors */
+    --bg-primary: #ffffff; /* bg-white */
+    --bg-secondary: #f9fafb; /* gray-50 */
+    --bg-tertiary: #f3f4f6; /* gray-100 */
+
+    /* Text colors */
+    --text-primary: #111827; /* text-gray-900 */
+    --text-secondary: #6b7280; /* gray-500 */
+    --text-tertiary: #9ca3af; /* gray-400 */
+
+    /* Border colors */
+    --border-color: #e5e7eb; /* gray-200 */
+    --border-hover: #d1d5db; /* gray-300 */
+
+    /* Accent colors */
+    --accent-blue: #3b82f6; /* blue-500 */
+    --accent-blue-dark: #2563eb; /* blue-600 */
+    --accent-purple: #8b5cf6; /* purple-500 */
+    --accent-purple-dark: #7c3aed; /* purple-600 */
+    --accent-green: #10b981; /* green-500 */
+    --accent-green-dark: #059669; /* green-600 */
+
+    /* Card styles */
+    --card-bg: #ffffff; /* white */
+    --card-border: #e5e7eb; /* gray-200 */
+    --card-shadow: rgba(0, 0, 0, 0.1);
+
+    --button-bg: #e5e7eb; /* bg-gray-200 */
+    --button-hover: #d1d5db; /* hover:bg-gray-300 */
+
     scroll-behavior: smooth;
 }
 
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
-}
+/* ============================================
+   THEME VARIABLES - Dark Mode
+   ============================================ */
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
+[data-theme="dark"] {
+    /* Background colors - matching your original */
+    --bg-primary: #111827; /* dark:bg-gray-900 */
+    --bg-secondary: #1f2937; /* gray-800 */
+    --bg-tertiary: #374151; /* gray-700 */
+
+    /* Text colors - matching your original */
+    --text-primary: #ffffff; /* dark:text-white */
+    --text-secondary: #d1d5db; /* gray-300 */
+    --text-tertiary: #9ca3af; /* gray-400 */
+
+    /* Border colors */
+    --border-color: #374151; /* gray-700 */
+    --border-hover: #4b5563; /* gray-600 */
+
+    /* Accent colors - slightly brighter for dark mode */
+    --accent-blue: #60a5fa; /* blue-400 */
+    --accent-blue-dark: #3b82f6; /* blue-500 */
+    --accent-purple: #a78bfa; /* purple-400 */
+    --accent-purple-dark: #8b5cf6; /* purple-500 */
+    --accent-green: #34d399; /* green-400 */
+    --accent-green-dark: #10b981; /* green-500 */
+
+    /* Card styles */
+    --card-bg: #1f2937; /* gray-800 */
+    --card-border: #374151; /* gray-700 */
+    --card-shadow: rgba(0, 0, 0, 0.3);
+
+    /* Button styles - matching your original */
+    --button-bg: #1f2937; /* dark:bg-gray-800 */
+    --button-hover: #374151; /* dark:hover:bg-gray-700 */
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

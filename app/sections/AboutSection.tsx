@@ -1,14 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Download, MapPin } from "lucide-react";
-import { Code, Rocket, Users, Zap } from "lucide-react";
+import {
+    Calendar,
+    Download,
+    MapPin,
+    Code,
+    Rocket,
+    Users,
+    Zap,
+} from "lucide-react";
+import { useTheme } from "../components/ThemeProvider";
 
 interface ServiceCard {
     icon: React.ElementType;
     title: string;
     description: string;
-    badge?: string;
 }
 
 const services: ServiceCard[] = [
@@ -39,6 +46,9 @@ const services: ServiceCard[] = [
 ];
 
 const AboutSection = () => {
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
+
     return (
         <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
@@ -52,7 +62,11 @@ const AboutSection = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         About Me
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    <p
+                        className={`text-xl ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                        }   max-w-3xl mx-auto`}
+                    >
                         Learn more about my journey, passion, and what drives me
                         as a developer
                     </p>
@@ -66,8 +80,16 @@ const AboutSection = () => {
                         viewport={{ once: true }}
                         className="space-y-6"
                     >
-                        <div className="prose prose-lg dark:prose-dark max-w-none">
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <div
+                            className={`prose  ${
+                                isDark ? "prose-dark" : "prose-lg"
+                            }  max-w-none`}
+                        >
+                            <p
+                                className={`${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                } leading-relaxed`}
+                            >
                                 I&apos;m a passionate Frontend Software Engineer
                                 with over 4 years of experience creating
                                 exceptional digital experiences. My journey
@@ -76,7 +98,11 @@ const AboutSection = () => {
                                 beautiful, functional, and user-centric web
                                 applications.
                             </p>
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <p
+                                className={`${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                } leading-relaxed`}
+                            >
                                 I specialize in modern frontend technologies
                                 including React, Next.js, and TypeScript, with a
                                 strong focus on performance optimization,
@@ -85,7 +111,11 @@ const AboutSection = () => {
                                 up-to-date with the latest industry trends and
                                 best practices.
                             </p>
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <p
+                                className={`${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                } leading-relaxed`}
+                            >
                                 When I&apos;m not coding, you can find me
                                 exploring new technologies, contributing to
                                 open-source projects, or sharing knowledge with
@@ -104,16 +134,28 @@ const AboutSection = () => {
                             <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-900/30 px-4 py-2 rounded-full">
                                 <MapPin
                                     size={16}
-                                    className="text-blue-600 dark:text-blue-400"
+                                    className={`${
+                                        isDark
+                                            ? "text-blue-400"
+                                            : "text-blue-600"
+                                    } `}
                                 />
                                 <span className="text-sm font-medium">
                                     Benue State, Nigeria
                                 </span>
                             </div>
-                            <div className="flex items-center space-x-2 bg-green-100 dark:bg-green-900/30 px-4 py-2 rounded-full">
+                            <div
+                                className={`flex items-center space-x-2 ${
+                                    isDark ? "bg-green-900/30" : "bg-green-100"
+                                } px-4 py-2 rounded-full`}
+                            >
                                 <Calendar
                                     size={16}
-                                    className="text-green-600 dark:text-green-400"
+                                    className={`${
+                                        isDark
+                                            ? "text-green-400"
+                                            : "text-green-600"
+                                    }`}
                                 />
                                 <span className="text-sm font-medium">
                                     Available for work
@@ -151,7 +193,11 @@ const AboutSection = () => {
                             return (
                                 <div
                                     key={index}
-                                    className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+                                    className={`${
+                                        isDark
+                                            ? "bg-gray-800 border-gray-700"
+                                            : "bg-white border-gray-200"
+                                    } p-6 rounded-xl shadow-lg border  `}
                                 >
                                     <div className="flex flex-col items-center text-center space-y-4">
                                         <div className="relative">
@@ -159,12 +205,6 @@ const AboutSection = () => {
                                                 className="w-12 h-12 text-blue-600"
                                                 strokeWidth={1.5}
                                             />
-                                            {service.badge && (
-                                                <div className="absolute -bottom-2 -right-2 bg-white border border-gray-200 rounded-full px-3 py-1 text-xs font-medium shadow-sm flex items-center gap-1">
-                                                    <Zap className="w-3 h-3" />
-                                                    {service.badge}
-                                                </div>
-                                            )}
                                         </div>
                                         <h3 className="text-xl font-semibold text-gray-400">
                                             {service.title}
@@ -182,4 +222,5 @@ const AboutSection = () => {
         </section>
     );
 };
+
 export default AboutSection;

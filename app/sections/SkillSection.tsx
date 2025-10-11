@@ -3,10 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { skills } from "../data";
+import { useTheme } from "../components/ThemeProvider";
 
 const SkillsSection = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const categories = ["All", "Frontend", "Tools"];
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
 
     const filteredSkills =
         selectedCategory === "All"
@@ -16,7 +19,9 @@ const SkillsSection = () => {
     return (
         <section
             id="skills"
-            className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800/50"
+            className={`py-20 px-4 sm:px-6 lg:px-8 ${
+                isDark ? "bg-gray-800/50" : "bg-gray-50"
+            } `}
         >
             <div className="max-w-7xl mx-auto">
                 <motion.div
@@ -29,7 +34,11 @@ const SkillsSection = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         Skills & Technologies
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    <p
+                        className={`text-xl max-w-3xl mx-auto ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                    >
                         Here are the technologies and tools I work with to bring
                         ideas to life
                     </p>
@@ -42,7 +51,13 @@ const SkillsSection = () => {
                     viewport={{ once: true }}
                     className="flex justify-center mb-12"
                 >
-                    <div className="flex bg-white dark:bg-gray-800 rounded-lg p-1 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div
+                        className={`flex rounded-lg p-1 shadow-lg border  dark: ${
+                            isDark
+                                ? "bg-gray-800 border-gray-700"
+                                : "bg-white border-gray-200"
+                        } `}
+                    >
                         {categories.map((category) => (
                             <button
                                 key={category}
@@ -50,7 +65,11 @@ const SkillsSection = () => {
                                 className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${
                                     selectedCategory === category
                                         ? "bg-blue-600 text-white shadow-md"
-                                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                                        : `${
+                                              isDark
+                                                  ? "text-gray-300 hover:text-blue-400"
+                                                  : "text-gray-600 hover:text-blue-600"
+                                          }`
                                 }`}
                             >
                                 {category}
@@ -71,17 +90,31 @@ const SkillsSection = () => {
                                     duration: 0.3,
                                     delay: index * 0.1,
                                 }}
-                                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300"
+                                className={`p-6 rounded-xl shadow-lg border hover:shadow-xl transition-shadow duration-300 ${
+                                    isDark
+                                        ? "bg-gray-800 border-gray-700"
+                                        : "bg-white border-gray-200"
+                                }`}
                             >
                                 <div className="flex justify-between items-center mb-3">
                                     <h3 className="text-lg font-semibold">
                                         {skill.name}
                                     </h3>
-                                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                                    <span
+                                        className={`text-sm  ${
+                                            isDark
+                                                ? "text-gray-400"
+                                                : "text-gray-500"
+                                        }`}
+                                    >
                                         {skill.level}%
                                     </span>
                                 </div>
-                                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div
+                                    className={`w-full rounded-full h-2 ${
+                                        isDark ? "bg-gray-700" : "bg-gray-200"
+                                    }`}
+                                >
                                     <motion.div
                                         initial={{ width: 0 }}
                                         whileInView={{

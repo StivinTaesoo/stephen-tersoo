@@ -1,43 +1,60 @@
 "use client";
 
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useTheme } from "../components/ThemeProvider";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Footer = () => {
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
+
+    const router = useRouter();
     return (
-        <footer className="bg-gray-900 dark:bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
+        <footer
+            className={`text-white py-12 px-4 sm:px-6 lg:px-8 ${
+                isDark ? "bg-black" : "bg-gray-900"
+            }`}
+        >
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                            Stephen Tersoo
-                        </h3>
+                    <div className="w-full">
+                        <Image
+                            src={`/images/logo-white.png`}
+                            alt="TS"
+                            width={200}
+                            height={200}
+                            className="w-[140px] mb-10"
+                            onClick={() => router.push("/")}
+                        />
                         <p className="text-gray-400 mb-4">
                             Frontend Software Engineer passionate about creating
                             beautiful and functional web experiences.
                         </p>
                         <div className="flex space-x-4">
-                            <a
+                            <Link
                                 href="https://github.com/StivinTaesoo"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors duration-200"
                             >
                                 <Github size={24} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="https://www.linkedin.com/mwlite/in/tersoo-stephen-66a70a93"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors duration-200"
                             >
                                 <Linkedin size={24} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="mailto:stephentersoo17@example.com"
                                 className="text-gray-400 hover:text-white transition-colors duration-200"
                             >
                                 <Mail size={24} />
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
