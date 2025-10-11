@@ -65,7 +65,11 @@ const SkillsSection = () => {
                                 className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${
                                     selectedCategory === category
                                         ? "bg-blue-600 text-white shadow-md"
-                                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                                        : `${
+                                              isDark
+                                                  ? "text-gray-300 hover:text-blue-400"
+                                                  : "text-gray-600 hover:text-blue-600"
+                                          }`
                                 }`}
                             >
                                 {category}

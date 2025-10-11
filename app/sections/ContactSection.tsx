@@ -16,6 +16,7 @@ import { useTheme } from "../components/ThemeProvider";
 // Contact Section
 const ContactSection = () => {
     const { theme } = useTheme();
+    const isDark = theme === "dark";
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -77,7 +78,11 @@ const ContactSection = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         Get In Touch
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    <p
+                        className={`text-xl max-w-3xl mx-auto ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                    >
                         Have a project in mind or want to collaborate? I&apos;d
                         love to hear from you!
                     </p>
@@ -95,7 +100,11 @@ const ContactSection = () => {
                             <h3 className="text-2xl font-semibold mb-6">
                                 Let&apos;s start a conversation
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-8">
+                            <p
+                                className={`mb-8 ${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                }`}
+                            >
                                 I&apos;m always interested in hearing about new
                                 projects and opportunities. Whether you&apos;re
                                 a company looking to hire, or you&apos;re a
@@ -106,45 +115,93 @@ const ContactSection = () => {
 
                         <div className="space-y-6">
                             <div className="flex items-center space-x-4">
-                                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                                <div
+                                    className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                                        isDark
+                                            ? "bg-blue-900/30"
+                                            : "bg-blue-100"
+                                    }`}
+                                >
                                     <Mail
-                                        className="text-blue-600 dark:text-blue-400"
+                                        className={`${
+                                            isDark
+                                                ? "text-blue-400"
+                                                : "text-blue-600"
+                                        }`}
                                         size={20}
                                     />
                                 </div>
                                 <div>
                                     <h4 className="font-medium">Email</h4>
-                                    <p className="text-gray-600 dark:text-gray-300">
+                                    <p
+                                        className={`${
+                                            isDark
+                                                ? "text-gray-300"
+                                                : "text-gray-600"
+                                        }`}
+                                    >
                                         stephentersoo17@gmail.com
                                     </p>
                                 </div>
                             </div>
 
                             <div className="flex items-center space-x-4">
-                                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                                <div
+                                    className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                                        isDark
+                                            ? "bg-green-900/30"
+                                            : "bg-green-100"
+                                    }`}
+                                >
                                     <MapPin
-                                        className="text-green-600 dark:text-green-400"
+                                        className={` ${
+                                            isDark
+                                                ? "text-green-400"
+                                                : "text-green-600"
+                                        }`}
                                         size={20}
                                     />
                                 </div>
                                 <div>
                                     <h4 className="font-medium">Location</h4>
-                                    <p className="text-gray-600 dark:text-gray-300">
+                                    <p
+                                        className={`${
+                                            isDark
+                                                ? "text-gray-300"
+                                                : "text-gray-600"
+                                        }`}
+                                    >
                                         Benue State, Nigeria
                                     </p>
                                 </div>
                             </div>
 
                             <div className="flex items-center space-x-4">
-                                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+                                <div
+                                    className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                                        isDark
+                                            ? "bg-purple-900/30"
+                                            : "bg-purple-100"
+                                    }`}
+                                >
                                     <Github
-                                        className="text-purple-600 dark:text-purple-400"
+                                        className={`${
+                                            isDark
+                                                ? "text-purple-400"
+                                                : "text-purple-600"
+                                        }`}
                                         size={20}
                                     />
                                 </div>
                                 <div>
                                     <h4 className="font-medium">GitHub</h4>
-                                    <p className="text-gray-600 dark:text-gray-300">
+                                    <p
+                                        className={`${
+                                            isDark
+                                                ? "text-gray-300"
+                                                : "text-gray-600"
+                                        }`}
+                                    >
                                         github.com/StivinTaesoo
                                     </p>
                                 </div>
@@ -160,7 +217,11 @@ const ContactSection = () => {
                                     href="https://github.com/StivinTaesoo"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                                        isDark
+                                            ? "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                    }`}
                                 >
                                     <Github size={20} />
                                 </a>
@@ -168,7 +229,11 @@ const ContactSection = () => {
                                     href="https://www.linkedin.com/mwlite/in/tersoo-stephen-66a70a93"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                                        isDark
+                                            ? "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                    }`}
                                 >
                                     <Linkedin size={20} />
                                 </a>
@@ -181,7 +246,11 @@ const ContactSection = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+                        className={` dark: p-8 rounded-xl shadow-lg border ${
+                            isDark
+                                ? "bg-gray-800 border-gray-700"
+                                : "bg-white border-gray-200"
+                        }`}
                     >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -199,7 +268,11 @@ const ContactSection = () => {
                                         required
                                         value={formData.name}
                                         onChange={handleInputChange}
-                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+                                        className={`w-full px-4 py-3 border  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white transition-colors duration-200 ${
+                                            isDark
+                                                ? "bg-gray-700 border-gray-600"
+                                                : "bg-white border-gray-300"
+                                        }`}
                                         placeholder="Your name"
                                     />
                                 </div>
@@ -217,7 +290,11 @@ const ContactSection = () => {
                                         required
                                         value={formData.email}
                                         onChange={handleInputChange}
-                                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+                                        className={`w-full px-4 py-3 border  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white transition-colors duration-200 ${
+                                            isDark
+                                                ? "bg-gray-700 border-gray-600"
+                                                : "bg-white border-gray-300"
+                                        }`}
                                         placeholder="your.email@example.com"
                                     />
                                 </div>
@@ -237,7 +314,11 @@ const ContactSection = () => {
                                     required
                                     value={formData.subject}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
+                                    className={`w-full px-4 py-3 border  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white transition-colors duration-200 ${
+                                        isDark
+                                            ? "bg-gray-700 border-gray-600"
+                                            : "bg-white border-gray-300"
+                                    }`}
                                     placeholder="What's this about?"
                                 />
                             </div>
@@ -256,7 +337,11 @@ const ContactSection = () => {
                                     rows={6}
                                     value={formData.message}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none transition-colors duration-200"
+                                    className={`w-full px-4 py-3 border  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white transition-colors duration-200 ${
+                                        isDark
+                                            ? "bg-gray-700 border-gray-600"
+                                            : "bg-white border-gray-300"
+                                    }`}
                                     placeholder="Tell me about your project or just say hi!"
                                 />
                             </div>
@@ -268,7 +353,11 @@ const ContactSection = () => {
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: -20 }}
-                                            className="flex items-center space-x-2 text-green-600 dark:text-green-400"
+                                            className={`flex items-center space-x-2 ${
+                                                isDark
+                                                    ? "text-green-400"
+                                                    : "text-green-600"
+                                            }`}
                                         >
                                             <CheckCircle size={20} />
                                             <span className="text-sm">

@@ -133,7 +133,11 @@ const ExperienceSection = () => {
                                         {experience.technologies.map((tech) => (
                                             <span
                                                 key={tech}
-                                                className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full"
+                                                className={`px-3 py-1 text-xs rounded-full ${
+                                                    isDark
+                                                        ? "bg-blue-900/30 text-blue-400"
+                                                        : "bg-blue-100 text-blue-600"
+                                                }`}
                                             >
                                                 {tech}
                                             </span>
