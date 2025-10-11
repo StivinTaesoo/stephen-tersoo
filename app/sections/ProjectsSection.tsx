@@ -4,10 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { projects } from "../data";
 import { ExternalLink, Github } from "lucide-react";
+import { useTheme } from "../components/ThemeProvider";
+import SocialLinks from "../components/SocialLinks";
 
 const ProjectsSection = () => {
     const [selectedFilter, setSelectedFilter] = useState("All");
     const [visibleProjects, setVisibleProjects] = useState(6);
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
 
     const categories = ["All", "Frontend", "Full Stack"];
 
@@ -29,7 +33,11 @@ const ProjectsSection = () => {
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                         Featured Projects
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    <p
+                        className={`text-xl max-w-3xl mx-auto ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                    >
                         A showcase of my recent work and side projects
                     </p>
                 </motion.div>
@@ -41,15 +49,25 @@ const ProjectsSection = () => {
                     viewport={{ once: true }}
                     className="flex justify-center mb-12"
                 >
-                    <div className="flex bg-white dark:bg-gray-800 rounded-lg p-1 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div
+                        className={`flex rounded-lg p-1 shadow-lg border  ${
+                            isDark
+                                ? "bg-gray-800 border-gray-700"
+                                : "bg-white border-gray-200"
+                        }`}
+                    >
                         {categories.map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setSelectedFilter(category)}
                                 className={`px-6 py-2 rounded-md font-medium transition-all duration-200 ${
                                     selectedFilter === category
-                                        ? "bg-blue-600 text-white shadow-md"
-                                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                                        ? `bg-blue-600 text-white shadow-md `
+                                        : ` dark:  dark: ${
+                                              isDark
+                                                  ? "text-gray-300 hover:text-blue-400"
+                                                  : "text-gray-600 hover:text-blue-600"
+                                          }`
                                 }`}
                             >
                                 {category}
@@ -72,7 +90,11 @@ const ProjectsSection = () => {
                                         duration: 0.6,
                                         delay: index * 0.1,
                                     }}
-                                    className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                                    className={`rounded-xl shadow-lg border overflow-hidden hover:shadow-xl transition-all duration-300 group ${
+                                        isDark
+                                            ? "bg-gray-800 border-gray-700"
+                                            : "bg-white border-gray-200"
+                                    }`}
                                 >
                                     <div className="relative overflow-hidden">
                                         <img
@@ -81,23 +103,18 @@ const ProjectsSection = () => {
                                             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-2 bg-white rounded-full text-gray-900 hover:bg-gray-100 transition-colors duration-200"
-                                            >
-                                                <ExternalLink size={20} />
-                                            </a>
+                                            <SocialLinks
+                                                url={project.liveUrl}
+                                                icon={ExternalLink}
+                                                hasBg={true}
+                                            />
+
                                             {project.githubUrl && (
-                                                <a
-                                                    href={project.githubUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="p-2 bg-white rounded-full text-gray-900 hover:bg-gray-100 transition-colors duration-200"
-                                                >
-                                                    <Github size={20} />
-                                                </a>
+                                                <SocialLinks
+                                                    url={project.githubUrl}
+                                                    icon={Github}
+                                                    hasBg={true}
+                                                />
                                             )}
                                         </div>
                                     </div>
@@ -107,12 +124,24 @@ const ProjectsSection = () => {
                                             <h3 className="text-xl font-semibold">
                                                 {project.title}
                                             </h3>
-                                            <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full">
+                                            <span
+                                                className={`px-2 py-1 text-xs  dark:  dark: rounded-full ${
+                                                    isDark
+                                                        ? "bg-blue-900/30 text-blue-400"
+                                                        : "bg-blue-100 text-blue-600"
+                                                }`}
+                                            >
                                                 {project.category}
                                             </span>
                                         </div>
 
-                                        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                                        <p
+                                            className={`mb-4 line-clamp-3 ${
+                                                isDark
+                                                    ? "text-gray-300"
+                                                    : "text-gray-600"
+                                            }`}
+                                        >
                                             {project.description}
                                         </p>
 
@@ -122,14 +151,24 @@ const ProjectsSection = () => {
                                                 .map((tech) => (
                                                     <span
                                                         key={tech}
-                                                        className="px-3 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+                                                        className={`px-3 py-1 text-xs  rounded-full ${
+                                                            isDark
+                                                                ? "bg-gray-700 text-gray-300"
+                                                                : "bg-gray-100 text-gray-700"
+                                                        }`}
                                                     >
                                                         {tech}
                                                     </span>
                                                 ))}
                                             {project.technologies.length >
                                                 3 && (
-                                                <span className="px-3 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
+                                                <span
+                                                    className={`px-3 py-1 text-xs  rounded-full ${
+                                                        isDark
+                                                            ? "bg-gray-700 text-gray-300"
+                                                            : "bg-gray-100 text-gray-700"
+                                                    }`}
+                                                >
                                                     +
                                                     {project.technologies
                                                         .length - 3}{" "}
@@ -155,7 +194,9 @@ const ProjectsSection = () => {
                             onClick={() =>
                                 setVisibleProjects((prev) => prev + 3)
                             }
-                            className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200"
+                            className={`px-8 py-3 border-2 border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 ${
+                                isDark ? "text-blue-400" : "text-blue-600"
+                            }`}
                         >
                             Load More Projects
                         </button>
