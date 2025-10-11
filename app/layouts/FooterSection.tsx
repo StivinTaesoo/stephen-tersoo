@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { useTheme } from "../components/ThemeProvider";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Footer = () => {
     const { theme } = useTheme();
@@ -33,28 +33,28 @@ const Footer = () => {
                             beautiful and functional web experiences.
                         </p>
                         <div className="flex space-x-4">
-                            <a
+                            <Link
                                 href="https://github.com/StivinTaesoo"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors duration-200"
                             >
                                 <Github size={24} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="https://www.linkedin.com/mwlite/in/tersoo-stephen-66a70a93"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors duration-200"
                             >
                                 <Linkedin size={24} />
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="mailto:stephentersoo17@example.com"
                                 className="text-gray-400 hover:text-white transition-colors duration-200"
                             >
                                 <Mail size={24} />
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

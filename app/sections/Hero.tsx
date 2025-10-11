@@ -1,6 +1,6 @@
 "use client";
 
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "../components/ThemeProvider";

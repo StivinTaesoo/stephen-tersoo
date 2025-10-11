@@ -12,8 +12,8 @@ import {
     Send,
 } from "lucide-react";
 import { useTheme } from "../components/ThemeProvider";
+import Link from "next/link";
 
-// Contact Section
 const ContactSection = () => {
     const { theme } = useTheme();
     const isDark = theme === "dark";
@@ -213,7 +213,7 @@ const ContactSection = () => {
                                 Follow me on social media
                             </h4>
                             <div className="flex space-x-4">
-                                <a
+                                <Link
                                     href="https://github.com/StivinTaesoo"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -224,8 +224,8 @@ const ContactSection = () => {
                                     }`}
                                 >
                                     <Github size={20} />
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                     href="https://www.linkedin.com/mwlite/in/tersoo-stephen-66a70a93"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -236,7 +236,7 @@ const ContactSection = () => {
                                     }`}
                                 >
                                     <Linkedin size={20} />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>
