@@ -1,16 +1,33 @@
 "use client";
 
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useTheme } from "../components/ThemeProvider";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 const Footer = () => {
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
+
+    const router = useRouter();
     return (
-        <footer className="bg-gray-900 dark:bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
+        <footer
+            className={`text-white py-12 px-4 sm:px-6 lg:px-8 ${
+                isDark ? "bg-black" : "bg-gray-900"
+            }`}
+        >
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                            Stephen Tersoo
-                        </h3>
+                    <div className="w-full">
+                        <Image
+                            src={`/images/logo-white.png`}
+                            alt="TS"
+                            width={200}
+                            height={200}
+                            className="w-[140px] mb-10"
+                            onClick={() => router.push("/")}
+                        />
                         <p className="text-gray-400 mb-4">
                             Frontend Software Engineer passionate about creating
                             beautiful and functional web experiences.
