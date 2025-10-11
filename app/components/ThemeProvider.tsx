@@ -91,31 +91,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
                     transition: "background-color 0.3s ease, color 0.3s ease",
                 }}
             >
-                <button
-                    onClick={toggleTheme}
-                    style={{
-                        position: "fixed",
-                        top: "1rem",
-                        right: "5rem",
-                        zIndex: 50,
-                        padding: "0.5rem",
-                        borderRadius: "9999px",
-                        background: colors.buttonBg,
-                        border: "none",
-                        cursor: "pointer",
-                        transition: "background-color 0.2s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.background = colors.buttonHover;
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.background = colors.buttonBg;
-                    }}
-                    aria-label="Toggle theme"
-                    className="md:right-4"
-                >
-                    {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
                 {children}
             </div>
         </ThemeContext.Provider>

@@ -1,3 +1,4 @@
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 interface ButtonProps {
@@ -29,6 +30,24 @@ export const ButtonPrimary: React.FC<ButtonProps> = ({
             }
         >
             {text}
+        </button>
+    );
+};
+
+export const ThemeButton = () => {
+    const { theme, toggleTheme } = useTheme();
+    const isDark = theme === "dark";
+    return (
+        <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className={`fixed top-4 right-20 md:right-4 z-50 p-2 rounded-full  transition-colors duration-200 ${
+                isDark
+                    ? "bg-gray-800 hover:bg-gray-700"
+                    : "bg-gray-200 hover:bg-gray-300"
+            }`}
+        >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </button>
     );
 };
